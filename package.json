@@ -1,4 +1,12 @@
 {
+  "name": "cypress-web-ui",
+  "description": "Cypress end-to-end test automation for web UI",
+  "private": true,
+  "scripts": {
+    "cy:open": "cypress open",
+    "test": "cypress run",
+    "test:chrome": "cypress run --browser chrome"
+  },
   "devDependencies": {
     "cypress": "^16.1.1"
   }

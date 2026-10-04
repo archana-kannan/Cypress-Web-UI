@@ -1,75 +1,75 @@
-# Cypress Web UI
+# 🌲 Cypress Web UI Automation
 
-This repository contains an end-to-end testing project built with Cypress. The Cypress dependency is declared in `package.json`, and the E2E configuration is in `cypress.config.js`.
+[![Cypress Tests](https://github.com/archana-kannan/Cypress-Web-UI/actions/workflows/cypress.yml/badge.svg)](https://github.com/archana-kannan/Cypress-Web-UI/actions/workflows/cypress.yml)
+![Cypress](https://img.shields.io/badge/Cypress%2016-17202C?logo=cypress&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![Tests](https://img.shields.io/badge/tests-122%20passing-brightgreen)
+![GitHub Actions](https://img.shields.io/badge/GitHub%20Actions-2088FF?logo=githubactions&logoColor=white)
 
-## Prerequisites
+End-to-end web UI test automation with **Cypress 16**. The suite has **122 tests across 20 specs** covering the main Cypress capabilities: UI actions, querying, assertions, network stubbing, cookies and storage, spies/stubs/clocks, viewports and more. It runs headless in Chrome on GitHub Actions.
 
-- Node.js and npm
-- Git
+## ✨ Coverage
 
-Check that they are installed:
+| Area | Specs |
+|------|-------|
+| **User journeys** | `todo.cy.js`: add, complete, filter and clear todos |
+| **Interacting with the UI** | `actions`, `querying`, `traversal`, `connectors`, `aliasing` |
+| **Assertions** | `assertions`: implicit (`should`) and explicit (`expect`) |
+| **Network** | `network_requests`: `cy.intercept` stubbing and waiting on requests |
+| **Browser state** | `cookies`, `storage`, `location`, `navigation`, `window`, `viewport` |
+| **Test doubles** | `spies_stubs_clocks`: `cy.spy`, `cy.stub`, `cy.clock` |
+| **Data and utilities** | `files` (fixtures), `utilities`, `cypress_api`, `misc`, `waiting` |
 
-```powershell
-node --version
-npm --version
-git --version
+## 📁 Project Structure
+
+```
+Cypress-Web-UI/
+├── .github/workflows/cypress.yml     # CI: headless Chrome, screenshots on failure
+├── cypress/
+│   ├── e2e/
+│   │   ├── 1-getting-started/        # todo app user journey
+│   │   └── 2-advanced-examples/      # 19 capability-focused specs
+│   ├── fixtures/                     # test data (JSON)
+│   └── support/
+│       ├── commands.js               # custom commands
+│       └── e2e.js                    # global hooks
+└── cypress.config.js
 ```
 
-## Install the project
+## 🚀 Getting Started
 
-Clone the repository if you have not already, then open a terminal in the project directory and install its dependencies:
+**Prerequisites:** Node.js 18+ and npm
 
-```powershell
+```bash
 git clone https://github.com/archana-kannan/Cypress-Web-UI.git
 cd Cypress-Web-UI
-
-npm install cypress -- will install the cypress in our local
+npm ci
 ```
 
-`npm install` reads `package.json` and `package-lock.json` and installs Cypress and the project's other dependencies.
+## ▶️ Running Tests
 
-## Open Cypress
+| Command | What it does |
+|---------|--------------|
+| `npm run cy:open` | Open the Cypress app, choose **E2E Testing**, pick a browser and spec |
+| `npm test` | Run all specs headless (Electron) |
+| `npm run test:chrome` | Run all specs headless in Chrome |
 
-Launch Cypress in interactive mode:
+Run one spec: `npx cypress run --spec cypress/e2e/1-getting-started/todo.cy.js`
 
-```powershell
-npx cypress open
-```
+> **Running from the VS Code terminal?** If Cypress fails with `bad option: --smoke-test`, VS Code has set `ELECTRON_RUN_AS_NODE`. Clear it first: `Remove-Item Env:ELECTRON_RUN_AS_NODE` (PowerShell) or `unset ELECTRON_RUN_AS_NODE` (bash).
 
-Choose **E2E Testing**, select a browser, and run a spec. The example specs are in `cypress/e2e/`; shared support code is in `cypress/support/`, and test fixtures are in `cypress/fixtures/`.
+## 🔄 Continuous Integration
 
-To run the E2E specs from the command line:
+[`.github/workflows/cypress.yml`](.github/workflows/cypress.yml) uses the official [`cypress-io/github-action`](https://github.com/cypress-io/github-action) to install, cache and run the suite in headless Chrome. It runs on push and pull request to `main`, weekly, and on demand. If a test fails, its screenshots are uploaded as an artifact.
 
-```powershell
-npx cypress run
-```
+## 🗺️ Roadmap
 
-## Configure Git identity
+- [ ] Page Object / app-action pattern for a real application under test
+- [ ] Custom commands for login and API seeding
+- [ ] Cross-browser matrix (Chrome, Firefox, Edge)
+- [ ] Mochawesome HTML reporting
 
-Set the name and email that Git records on your commits. These commands configure them globally for your Windows user:
+## 👩‍💻 Author
 
-```powershell
-git config --global user.name "username"
-git config --global user.email "email"
-```
-
-Verify the values:
-
-```powershell
-git config --global --get user.name
-git config --global --get user.email
-```
-
-Git configuration uses `git config`, not `set git.username` or `set git.email`. The name and email identify the author of commits; they do not sign you in to GitHub or authorize a push.
-
-## Push changes
-
-After making and committing your changes, push the current branch:
-
-```powershell
-git add .
-git commit -m "Describe your changes"
-git push
-```
-
-If `git push` is rejected or asks you to authenticate, check the remote with `git remote -v` and sign in using your configured Git credential manager, a personal access token, or SSH key. GitHub does not accept your Git commit email as push authentication.
+**Archana Kannan**, AI-Powered Software Quality Engineer
+[GitHub](https://github.com/archana-kannan) · [LinkedIn](https://www.linkedin.com/in/archana-kannan-2021)
